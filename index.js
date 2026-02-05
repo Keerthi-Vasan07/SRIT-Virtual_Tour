@@ -182,14 +182,19 @@
     return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;');
   }
 
-  function switchScene(scene) {
-    stopAutorotate();
-    scene.view.setParameters(scene.data.initialViewParameters);
-    scene.scene.switchTo();
-    startAutorotate();
-    updateSceneName(scene);
-    updateSceneList(scene);
+  function switchScene(scene, viewParams) {
+  stopAutorotate();
+
+  if (viewParams) {
+    scene.view.setParameters(viewParams);
   }
+
+  scene.scene.switchTo();
+  startAutorotate();
+  updateSceneName(scene);
+  updateSceneList(scene);
+}
+
 
   function updateSceneName(scene) {
     sceneNameElement.innerHTML = sanitize(scene.data.name);
@@ -253,7 +258,7 @@
 
     // Create image element.
     var icon = document.createElement('img');
-    icon.src = 'img/link.png';
+    icon.src = 'img/arrow.png';
     icon.classList.add('link-hotspot-icon');
 
     // Set rotation transform.
@@ -265,8 +270,22 @@
 
     // Add click event handler.
     wrapper.addEventListener('click', function() {
-      switchScene(findSceneById(hotspot.target));
-    });
+
+  var currentYaw = viewer.view().yaw();
+  var currentPitch = viewer.view().pitch();
+  var currentFov = viewer.view().fov();
+
+  switchScene(
+    findSceneById(hotspot.target),
+    {
+      yaw: currentYaw,
+      pitch: currentPitch,
+      fov: currentFov
+    }
+  );
+
+});
+
 
     // Prevent touch and scroll events from reaching the parent element.
     // This prevents the view control logic from interfering with the hotspot.

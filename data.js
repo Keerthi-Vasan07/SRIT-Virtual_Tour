@@ -1,5 +1,266 @@
 var APP_DATA = {
   "scenes": [
+
+    {
+      "id": "43-hive",
+      "name": "HIVE",
+      "levels": [
+        {
+          "tileSize": 256,
+          "size": 256,
+          "fallbackOnly": true
+        },
+        {
+          "tileSize": 512,
+          "size": 512
+        },
+        {
+          "tileSize": 512,
+          "size": 1024
+        },
+        {
+          "tileSize": 512,
+          "size": 2048
+        },
+        {
+          "tileSize": 512,
+          "size": 4096
+        }
+      ],
+      "faceSize": 2976,
+      "initialViewParameters": {
+        "pitch": 0,
+        "yaw": 0,
+        "fov": 1.5707963267948966
+      },
+      "linkHotspots": [],
+      "infoHotspots": [
+        {
+          "yaw": 0.16703822484662645,
+          "pitch": 0.13838487431989321,
+          "title": "HIVE",
+          "text": "The creative hotspot of SRIT where imagination takes flight.It's a Hub For Innovation and Entrepreneurship."
+        }
+      ]
+    },
+    //////////////
+    {
+      "id": "44-idea-lab",
+      "name": "IDEA LAB",
+      "levels": [
+        {
+          "tileSize": 256,
+          "size": 256,
+          "fallbackOnly": true
+        },
+        {
+          "tileSize": 512,
+          "size": 512
+        },
+        {
+          "tileSize": 512,
+          "size": 1024
+        },
+        {
+          "tileSize": 512,
+          "size": 2048
+        },
+        {
+          "tileSize": 512,
+          "size": 4096
+        }
+      ],
+      "faceSize": 2976,
+      "initialViewParameters": {
+        "pitch": 0,
+        "yaw": 0,
+        "fov": 1.5707963267948966
+      },
+      "linkHotspots": [],
+      "infoHotspots": [
+        {
+          "yaw": -0.41468202983725533,
+          "pitch": 0.0640064200007906,
+          "title": "IDEA LAB",
+          "text": "IDEA LAB gives students the tools and freedom to explore ideas, design solutions, and transform concepts into real-world creations."
+        }
+      ]
+    },
+    ////////
+     {
+      "id": "45-coe-ev",
+      "name": "COE - EV",
+      "levels": [
+        {
+          "tileSize": 256,
+          "size": 256,
+          "fallbackOnly": true
+        },
+        {
+          "tileSize": 512,
+          "size": 512
+        },
+        {
+          "tileSize": 512,
+          "size": 1024
+        },
+        {
+          "tileSize": 512,
+          "size": 2048
+        },
+        {
+          "tileSize": 512,
+          "size": 4096
+        }
+      ],
+      "faceSize": 2976,
+      "initialViewParameters": {
+        "pitch": 0,
+        "yaw": 0,
+        "fov": 1.5707963267948966
+      },
+      "linkHotspots": [],
+      "infoHotspots": [
+        {
+          "yaw": -0.06526759181101305,
+          "pitch": 0.05035563510245211,
+          "title": "COE - EV",
+          "text": "The Centre of Excellence in Electric Vehicles provides hands-on learning, real-time testing, and innovation opportunities in next-generation mobility platforms."
+        }
+      ]
+    },
+    //////
+    {
+      "id": "12-coe-arvr",
+      "name": "COE-AR/VR",
+      "levels": [
+        {
+          "tileSize": 256,
+          "size": 256,
+          "fallbackOnly": true
+        },
+        {
+          "tileSize": 512,
+          "size": 512
+        },
+        {
+          "tileSize": 512,
+          "size": 1024
+        },
+        {
+          "tileSize": 512,
+          "size": 2048
+        },
+        {
+          "tileSize": 512,
+          "size": 4096
+        }
+      ],
+      "faceSize": 2976,
+      "initialViewParameters": {
+        "pitch": 0,
+        "yaw": 0,
+        "fov": 1.5707963267948966
+      },
+      "linkHotspots": [],
+      "infoHotspots": [
+        {
+          "yaw": 1.8842275903301857,
+          "pitch": 0.11712616264126652,
+          "title": "COE - AR/VR",
+          "text": "The Centre of Excellence in AR/VR empowers students to design, develop, and deploy immersive experiences using cutting-edge augmented and virtual reality technologies."
+        }
+      ]
+    },
+    /////////////
+    {
+      "id": "36-coe--intelignce",
+      "name": "COE- INTELLIGENCE SYSTEMS",
+      "levels": [
+        {
+          "tileSize": 256,
+          "size": 256,
+          "fallbackOnly": true
+        },
+        {
+          "tileSize": 512,
+          "size": 512
+        },
+        {
+          "tileSize": 512,
+          "size": 1024
+        },
+        {
+          "tileSize": 512,
+          "size": 2048
+        }
+      ],
+      "faceSize": 1500,
+      "initialViewParameters": {
+        "pitch": 0,
+        "yaw": 0,
+        "fov": 1.5707963267948966
+      },
+      "linkHotspots": [],
+      "infoHotspots": [
+        {
+          "yaw": 0,
+          "pitch": 0,
+          "title": "COE INTELLIGENCE SYSTEMS",
+          "text": "The Centre of Excellence in Intelligent Systems equips students with hands-on exposure to Artificial Intelligence, Machine Learning, Robotics, and automation technologies, fostering innovation-driven problem solving for the real world."
+        }
+      ]
+    },
+    ///////////
+    {
+      "id": "0-reception",
+      "name": "Reception",
+      "levels": [
+        {
+          "tileSize": 256,
+          "size": 256,
+          "fallbackOnly": true
+        },
+        {
+          "tileSize": 512,
+          "size": 512
+        },
+        {
+          "tileSize": 512,
+          "size": 1024
+        },
+        {
+          "tileSize": 512,
+          "size": 2048
+        },
+        {
+          "tileSize": 512,
+          "size": 4096
+        }
+      ],
+      "faceSize": 2974,
+      "initialViewParameters": {
+        "pitch": 0,
+        "yaw": 0,
+        "fov": 1.5707963267948966
+      },
+      "linkHotspots": [
+        {
+          "yaw": 3.1148868529094944,
+          "pitch": 0.22939638569265597,
+          "rotation": 0,
+          "target": "101-189"
+        }
+      ],
+      "infoHotspots": [
+        {
+          "yaw": -0.014364849509970412,
+          "pitch": 0.022121149029274534,
+          "title": "Reception",
+          "text": "The welcoming gateway of SRIT, where every journey begins.Guidance, support, and smiles greet you the moment you arrive."
+        }
+      ]
+    },
     {
       "id": "101-189",
       "name": "189",
@@ -44,7 +305,13 @@ var APP_DATA = {
           "pitch": 0.2642495298111207,
           "rotation": 0,
           "target": "107-205jpg"
-        }
+        },
+        {
+          "yaw": 1.700278899862159,
+          "pitch": 0.20833207361578232,
+          "rotation": 0,
+          "target": "0-reception"
+        },
       ],
       "infoHotspots": []
     },
@@ -88,17 +355,17 @@ var APP_DATA = {
           "target": "103-198"
         },
         {
-          "yaw": -1.8301747986999892,
+          "yaw": -1.5301747986999892,
           "pitch": 0.17836687534792972,
-          "rotation": 11.780972450961727,
-          "target": "102-196"
+          "rotation": 0,
+          "target": "46-306"
         },
-        {
-          "yaw": -1.2330104863034208,
-          "pitch": 0.17718426655151376,
-          "rotation": 7.0685834705770345,
-          "target": "102-196"
-        }
+        // {
+        //   "yaw": -1.2330104863034208,
+        //   "pitch": 0.17718426655151376,
+        //   "rotation": 7.0685834705770345,
+        //   "target": "102-196"
+        // }
       ],
       "infoHotspots": []
     },
@@ -606,7 +873,7 @@ var APP_DATA = {
           "yaw": -1.6690141983047262,
           "pitch": 0.21720212528030558,
           "rotation": 0,
-          "target": "100-283"
+          "target": "46-306"
         },
         {
           "yaw": 3.050995695110279,
@@ -614,12 +881,12 @@ var APP_DATA = {
           "rotation": 0,
           "target": "57-4"
         },
-        {
-          "yaw": 0.9954323710095707,
-          "pitch": 0.4855475814724102,
-          "rotation": 0,
-          "target": "100-283"
-        }
+        // {
+        //   "yaw": 0.9954323710095707,
+        //   "pitch": 0.4855475814724102,
+        //   "rotation": 0,
+        //   "target": "100-283"
+        // }
       ],
       "infoHotspots": []
     },
@@ -2674,7 +2941,7 @@ var APP_DATA = {
           "yaw": -0.1923608542499018,
           "pitch": 0.31361373276744686,
           "rotation": 0,
-          "target": "47-302-1"
+          "target": "100-283"
         },
         {
           "yaw": 3.0367914134919456,
