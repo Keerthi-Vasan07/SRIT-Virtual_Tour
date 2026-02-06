@@ -336,13 +336,13 @@ body.fullscreen-enabled.mobile #autorotateToggle {
 }
 
 #sceneListToggle.enabled {
-  background: rgba(175, 82, 222, 0.15);
-  border-color: rgba(175, 82, 222, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 #sceneListToggle.enabled:hover {
-  background: rgba(175, 82, 222, 0.25);
-  border-color: rgba(175, 82, 222, 0.4);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 /* Scene List - Apple sidebar style */
@@ -1097,7 +1097,7 @@ body.view-control-buttons .viewControlButton {
 
   transform: rotate(-45deg);
 } */
-.minimap {
+/* .minimap {
   position: fixed;
   top: 20px;
   right: 20px;
@@ -1122,4 +1122,45 @@ body.view-control-buttons .viewControlButton {
   background: red;
   border-radius: 50%;
   transform: translate(-50%, -50%);
+} */
+/* ===== Minimap (glassy) ===== */
+#minimap{
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 18px;
+  overflow: hidden;
+
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+  z-index: 9999;
 }
+
+#mapImage{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#playerDot{
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ff3b30;         /* red dot */
+  border: 3px solid #fff;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: top .6s ease, left .6s ease, transform .1s linear;
+}
+
+
+#minimap { background: red !important; }
+
