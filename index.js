@@ -15,7 +15,7 @@
  */
 'use strict';
 
-(function() {
+(function () {
   var Marzipano = window.Marzipano;
   var bowser = window.bowser;
   var screenfull = window.screenfull;
@@ -25,14 +25,40 @@
   var panoElement = document.querySelector('#pano');
   var sceneNameElement = document.querySelector('#titleBar .sceneName');
   var sceneListElement = document.querySelector('#sceneList');
-  var sceneElements = document.querySelectorAll('#sceneList .scene');
   var sceneListToggleElement = document.querySelector('#sceneListToggle');
   var autorotateToggleElement = document.querySelector('#autorotateToggle');
   var fullscreenToggleElement = document.querySelector('#fullscreenToggle');
 
+  // Dynamic Scene List Generation
+  var sceneListMapping = {
+    "43-hive": "HIVE",
+    "44-idea-lab": "IDEA LAB",
+    "45-coe-ev": "COE Electric Vehicle",
+    "36-coe--intelignce": "COE Intelligence Systems",
+    "12-coe-arvr": "COE AR/VR",
+    "0-reception": "Main Entrance"
+  };
+
+  var scenesUl = document.querySelector('#sceneList .scenes');
+  data.scenes.forEach(function (sceneData) {
+    if (sceneListMapping[sceneData.id]) {
+      var el = document.createElement('a');
+      el.href = 'javascript:void(0)';
+      el.classList.add('scene');
+      el.setAttribute('data-id', sceneData.id);
+      var li = document.createElement('li');
+      li.classList.add('text');
+      li.textContent = sceneListMapping[sceneData.id];
+      el.appendChild(li);
+      scenesUl.appendChild(el);
+    }
+  });
+
+  var sceneElements = document.querySelectorAll('#sceneList .scene');
+
   // Detect desktop or mobile mode.
   if (window.matchMedia) {
-    var setMode = function() {
+    var setMode = function () {
       if (mql.matches) {
         document.body.classList.remove('desktop');
         document.body.classList.add('mobile');
@@ -50,7 +76,7 @@
 
   // Detect whether we are on a touch device.
   document.body.classList.add('no-touch');
-  window.addEventListener('touchstart', function() {
+  window.addEventListener('touchstart', function () {
     document.body.classList.remove('no-touch');
     document.body.classList.add('touch');
   });
@@ -72,106 +98,106 @@
 
   var playerDot = document.getElementById("playerDot");
 
-/* Map positions per scene id (X%, Y%) */
-var mapPositions = {
-  "59-2-2": { x: 100, y: 8 },
-  "58-3":   { x: 100, y: 8 },
-  "100-283":        { x: 100, y: 12 },
-  "46-306":      { x: 80, y: 12 },
-  "45-308":      { x: 77, y: 12 },
-  "44-310":      { x: 75, y: 12 },
-  "43-312":      { x: 70, y: 12 },
-  "42-314":      { x: 65, y: 10 },
-  "41-316":      { x: 62, y: 10 },
-  "40-318":      { x: 60, y: 10 },
-  "39-320":      { x: 59, y: 10 },
-  "38-322":      { x: 57, y: 10},
-  "37-324":      { x: 55, y:10 },
-  "36-326":      { x: 52, y: 10 },
-  "35-328":      { x: 50, y: 8 },
-  "34-330":      { x: 49, y: 8 },
-  "33-332":      { x: 47, y: 8 },
-  "28-342":      { x: 45, y: 8 },
-  "27-344":      { x: 42, y: 8 },
-  "26-346":      { x: 40, y: 8 },
-  "25-348":      { x: 38, y: 8 },
-  "24-350":      { x: 35, y: 8 },
-  "23-352":      { x: 32, y: 8 },
-  "22-354":      { x: 30, y: 8 },
-  "21-356":      { x: 28, y: 7 },
-  "20-358":      { x: 25, y: 7 },
-  "19-360":      { x: 22, y: 7 },
-  "18-362":      { x: 20, y: 7 },
-  "17-364":      { x: 18, y: 7 },
-  "16-366":      { x: 15, y: 7 },
-  "15-368":      { x: 12, y: 7 },
-  "14-370":      { x: 10, y: 7 },
-  "13-372":      { x: 9, y: 7 },
-  "12-374":      { x: 7, y: 7 },
-  "11-376":      { x: 5, y: 7 },
-  "10-378":      { x: 2, y: 7 },
-  "9-380":       { x: 0, y: 7 },
-  "8-382":       { x: 0, y: 7 },
-  "7-384":       { x: 0, y: 7 },
-  "6-386":       { x: 0, y: 7 },
-  "5-388":       { x: 0, y: 7 },
-  "4-390":       { x: 0, y: 7 },
-  "3-392":       { x: 0, y: 7 },
-  "2-394":       { x: 0, y: 7 },
-  "1-396":       { x: 0, y: 7 },
+  /* Map positions per scene id (X%, Y%) */
+  var mapPositions = {
+    "59-2-2": { x: 100, y: 8 },
+    "58-3": { x: 100, y: 8 },
+    "100-283": { x: 100, y: 12 },
+    "46-306": { x: 80, y: 12 },
+    "45-308": { x: 77, y: 12 },
+    "44-310": { x: 75, y: 12 },
+    "43-312": { x: 70, y: 12 },
+    "42-314": { x: 65, y: 10 },
+    "41-316": { x: 62, y: 10 },
+    "40-318": { x: 60, y: 10 },
+    "39-320": { x: 59, y: 10 },
+    "38-322": { x: 57, y: 10 },
+    "37-324": { x: 55, y: 10 },
+    "36-326": { x: 52, y: 10 },
+    "35-328": { x: 50, y: 8 },
+    "34-330": { x: 49, y: 8 },
+    "33-332": { x: 47, y: 8 },
+    "28-342": { x: 45, y: 8 },
+    "27-344": { x: 42, y: 8 },
+    "26-346": { x: 40, y: 8 },
+    "25-348": { x: 38, y: 8 },
+    "24-350": { x: 35, y: 8 },
+    "23-352": { x: 32, y: 8 },
+    "22-354": { x: 30, y: 8 },
+    "21-356": { x: 28, y: 7 },
+    "20-358": { x: 25, y: 7 },
+    "19-360": { x: 22, y: 7 },
+    "18-362": { x: 20, y: 7 },
+    "17-364": { x: 18, y: 7 },
+    "16-366": { x: 15, y: 7 },
+    "15-368": { x: 12, y: 7 },
+    "14-370": { x: 10, y: 7 },
+    "13-372": { x: 9, y: 7 },
+    "12-374": { x: 7, y: 7 },
+    "11-376": { x: 5, y: 7 },
+    "10-378": { x: 2, y: 7 },
+    "9-380": { x: 0, y: 7 },
+    "8-382": { x: 0, y: 7 },
+    "7-384": { x: 0, y: 7 },
+    "6-386": { x: 0, y: 7 },
+    "5-388": { x: 0, y: 7 },
+    "4-390": { x: 0, y: 7 },
+    "3-392": { x: 0, y: 7 },
+    "2-394": { x: 0, y: 7 },
+    "1-396": { x: 0, y: 7 },
 
-  "91-408":       { x: 45, y: 13 },
-  "92-410":       { x: 45, y: 15 },
-  "93-412":       { x: 45, y: 16 },
-  "94-414":       { x: 45, y: 18 },
-  "95-416":       { x: 45, y: 19 },
-  "96-418":       { x: 45, y: 20 },
-  "97-420":       { x: 45, y: 23 },
-  "98-422":       { x: 45, y: 25 },
-  "99-424":       { x: 45, y: 27 },
-  "77-484-1jpg":    { x: 45, y: 40 },
-  "76-482jpg":    { x: 35, y: 100 },
-  "78-486jpg":    { x: 40, y: 40},
-  "79-488jpg":    { x: 45, y: 40 },
-  "80-490jpg":    { x: 50, y: 40 },
-  "81-492jpg":    { x: 55, y: 35 },
-  "82-494jpg":    { x: 60, y: 30 },
-  "83-496jpg":    { x: 65, y: 30 },
-  "84-498jpg":    { x: 70, y: 30 },
-  "85-500jpg":    { x: 75, y: 30 },
-  "57-4":         { x: 100, y: 20 },
-  "56-285":       { x: 100, y: 25 },
-  "55-286":       { x: 100, y: 27 },
-  "54-288":       { x: 100, y: 30 },
-  "53-290":       { x: 100, y: 35 },
-  "52-292":       { x: 100, y: 40 },
-  "51-294":       { x: 90, y: 40 },
-  "50-296":       { x: 80, y: 40 },
-  "49-298":       { x: 70, y: 40 },
-  "48-300":       { x: 65, y: 40 },
-  "101-189":      { x: 72, y: 35 },
-  "111-213jpg":      { x: 80, y: 30 },
-  "110-211jpg":      { x: 80, y: 27 },
-  "109-209jpg":      { x: 77, y: 25 },
-  "108-208jpg":      { x: 75, y: 25 },
-  "103-198":      { x: 73, y: 20 },
-  "102-196":      { x: 73, y: 17 },
-  "104-199jpg":      { x: 70, y: 20 },
-  "105-202jpg":      { x: 70, y: 20 },
-  "106-203jpg":      { x: 67, y: 22 },
-  "107-205jpg":      { x: 65, y: 26 },
+    "91-408": { x: 45, y: 13 },
+    "92-410": { x: 45, y: 15 },
+    "93-412": { x: 45, y: 16 },
+    "94-414": { x: 45, y: 18 },
+    "95-416": { x: 45, y: 19 },
+    "96-418": { x: 45, y: 20 },
+    "97-420": { x: 45, y: 23 },
+    "98-422": { x: 45, y: 25 },
+    "99-424": { x: 45, y: 27 },
+    "77-484-1jpg": { x: 45, y: 40 },
+    "76-482jpg": { x: 35, y: 100 },
+    "78-486jpg": { x: 40, y: 40 },
+    "79-488jpg": { x: 45, y: 40 },
+    "80-490jpg": { x: 50, y: 40 },
+    "81-492jpg": { x: 55, y: 35 },
+    "82-494jpg": { x: 60, y: 30 },
+    "83-496jpg": { x: 65, y: 30 },
+    "84-498jpg": { x: 70, y: 30 },
+    "85-500jpg": { x: 75, y: 30 },
+    "57-4": { x: 100, y: 20 },
+    "56-285": { x: 100, y: 25 },
+    "55-286": { x: 100, y: 27 },
+    "54-288": { x: 100, y: 30 },
+    "53-290": { x: 100, y: 35 },
+    "52-292": { x: 100, y: 40 },
+    "51-294": { x: 90, y: 40 },
+    "50-296": { x: 80, y: 40 },
+    "49-298": { x: 70, y: 40 },
+    "48-300": { x: 65, y: 40 },
+    "101-189": { x: 72, y: 35 },
+    "111-213jpg": { x: 80, y: 30 },
+    "110-211jpg": { x: 80, y: 27 },
+    "109-209jpg": { x: 77, y: 25 },
+    "108-208jpg": { x: 75, y: 25 },
+    "103-198": { x: 73, y: 20 },
+    "102-196": { x: 73, y: 17 },
+    "104-199jpg": { x: 70, y: 20 },
+    "105-202jpg": { x: 70, y: 20 },
+    "106-203jpg": { x: 67, y: 22 },
+    "107-205jpg": { x: 65, y: 26 },
 
-};
+  };
 
   // Create scenes.
-  var scenes = data.scenes.map(function(data) {
+  var scenes = data.scenes.map(function (data) {
     var urlPrefix = "tiles";
     var source = Marzipano.ImageUrlSource.fromString(
       urlPrefix + "/" + data.id + "/{z}/{f}/{y}/{x}.jpg",
       { cubeMapPreviewUrl: urlPrefix + "/" + data.id + "/preview.jpg" });
     var geometry = new Marzipano.CubeGeometry(data.levels);
 
-    var limiter = Marzipano.RectilinearView.limit.traditional(data.faceSize, 100*Math.PI/180, 120*Math.PI/180);
+    var limiter = Marzipano.RectilinearView.limit.traditional(data.faceSize, 100 * Math.PI / 180, 120 * Math.PI / 180);
     var view = new Marzipano.RectilinearView(data.initialViewParameters, limiter);
 
     var scene = viewer.createScene({
@@ -182,13 +208,13 @@ var mapPositions = {
     });
 
     // Create link hotspots.
-    data.linkHotspots.forEach(function(hotspot) {
+    data.linkHotspots.forEach(function (hotspot) {
       var element = createLinkHotspotElement(hotspot);
       scene.hotspotContainer().createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
     });
 
     // Create info hotspots.
-    data.infoHotspots.forEach(function(hotspot) {
+    data.infoHotspots.forEach(function (hotspot) {
       var element = createInfoHotspotElement(hotspot);
       scene.hotspotContainer().createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
     });
@@ -204,7 +230,7 @@ var mapPositions = {
   var autorotate = Marzipano.autorotate({
     yawSpeed: 0.03,
     targetPitch: 0,
-    targetFov: Math.PI/2
+    targetFov: Math.PI / 2
   });
   if (data.settings.autorotateEnabled) {
     autorotateToggleElement.classList.add('enabled');
@@ -216,10 +242,10 @@ var mapPositions = {
   // Set up fullscreen mode, if supported.
   if (screenfull.enabled && data.settings.fullscreenButton) {
     document.body.classList.add('fullscreen-enabled');
-    fullscreenToggleElement.addEventListener('click', function() {
+    fullscreenToggleElement.addEventListener('click', function () {
       screenfull.toggle();
     });
-    screenfull.on('change', function() {
+    screenfull.on('change', function () {
       if (screenfull.isFullscreen) {
         fullscreenToggleElement.classList.add('enabled');
       } else {
@@ -239,15 +265,17 @@ var mapPositions = {
   }
 
   // Set handler for scene switch.
-  scenes.forEach(function(scene) {
+  scenes.forEach(function (scene) {
     var el = document.querySelector('#sceneList .scene[data-id="' + scene.data.id + '"]');
-    el.addEventListener('click', function() {
-      switchScene(scene);
-      // On mobile, hide scene list after selecting a scene.
-      if (document.body.classList.contains('mobile')) {
-        hideSceneList();
-      }
-    });
+    if (el) {
+      el.addEventListener('click', function () {
+        switchScene(scene);
+        // On mobile, hide scene list after selecting a scene.
+        if (document.body.classList.contains('mobile')) {
+          hideSceneList();
+        }
+      });
+    }
   });
 
   // DOM elements for view controls.
@@ -264,36 +292,36 @@ var mapPositions = {
 
   // Associate view controls with elements.
   var controls = viewer.controls();
-  controls.registerMethod('upElement',    new Marzipano.ElementPressControlMethod(viewUpElement,     'y', -velocity, friction), true);
-  controls.registerMethod('downElement',  new Marzipano.ElementPressControlMethod(viewDownElement,   'y',  velocity, friction), true);
-  controls.registerMethod('leftElement',  new Marzipano.ElementPressControlMethod(viewLeftElement,   'x', -velocity, friction), true);
-  controls.registerMethod('rightElement', new Marzipano.ElementPressControlMethod(viewRightElement,  'x',  velocity, friction), true);
-  controls.registerMethod('inElement',    new Marzipano.ElementPressControlMethod(viewInElement,  'zoom', -velocity, friction), true);
-  controls.registerMethod('outElement',   new Marzipano.ElementPressControlMethod(viewOutElement, 'zoom',  velocity, friction), true);
+  controls.registerMethod('upElement', new Marzipano.ElementPressControlMethod(viewUpElement, 'y', -velocity, friction), true);
+  controls.registerMethod('downElement', new Marzipano.ElementPressControlMethod(viewDownElement, 'y', velocity, friction), true);
+  controls.registerMethod('leftElement', new Marzipano.ElementPressControlMethod(viewLeftElement, 'x', -velocity, friction), true);
+  controls.registerMethod('rightElement', new Marzipano.ElementPressControlMethod(viewRightElement, 'x', velocity, friction), true);
+  controls.registerMethod('inElement', new Marzipano.ElementPressControlMethod(viewInElement, 'zoom', -velocity, friction), true);
+  controls.registerMethod('outElement', new Marzipano.ElementPressControlMethod(viewOutElement, 'zoom', velocity, friction), true);
 
   function sanitize(s) {
     return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;');
   }
 
   function switchScene(scene, viewParams) {
-  stopAutorotate();
+    stopAutorotate();
 
-  if (viewParams) {
-    scene.view.setParameters(viewParams);
+    if (viewParams) {
+      scene.view.setParameters(viewParams);
+    }
+
+    scene.scene.switchTo();
+    startAutorotate();
+    updateSceneName(scene);
+    updateSceneList(scene);
+
+    var pos = mapPositions[scene.data.id];
+    if (pos) {
+      playerDot.style.left = pos.x + "%";
+      playerDot.style.top = pos.y + "%";
+    }
+
   }
-
-  scene.scene.switchTo();
-  startAutorotate();
-  updateSceneName(scene);
-  updateSceneList(scene);
-
-  var pos = mapPositions[scene.data.id];
-if (pos) {
-  playerDot.style.left = pos.x + "%";
-  playerDot.style.top  = pos.y + "%";
-}
-
-}
 
 
   function updateSceneName(scene) {
@@ -362,29 +390,29 @@ if (pos) {
     icon.classList.add('link-hotspot-icon');
 
     // Set rotation transform.
-    var transformProperties = [ '-ms-transform', '-webkit-transform', 'transform' ];
+    var transformProperties = ['-ms-transform', '-webkit-transform', 'transform'];
     for (var i = 0; i < transformProperties.length; i++) {
       var property = transformProperties[i];
       icon.style[property] = 'rotate(' + hotspot.rotation + 'rad)';
     }
 
     // Add click event handler.
-    wrapper.addEventListener('click', function() {
+    wrapper.addEventListener('click', function () {
 
-  var currentYaw = viewer.view().yaw();
-  var currentPitch = viewer.view().pitch();
-  var currentFov = viewer.view().fov();
+      var currentYaw = viewer.view().yaw();
+      var currentPitch = viewer.view().pitch();
+      var currentFov = viewer.view().fov();
 
-  switchScene(
-    findSceneById(hotspot.target),
-    {
-      yaw: currentYaw,
-      pitch: currentPitch,
-      fov: currentFov
-    }
-  );
+      switchScene(
+        findSceneById(hotspot.target),
+        {
+          yaw: currentYaw,
+          pitch: currentPitch,
+          fov: currentFov
+        }
+      );
 
-});
+    });
 
 
     // Prevent touch and scroll events from reaching the parent element.
@@ -392,13 +420,15 @@ if (pos) {
     stopTouchAndScrollEventPropagation(wrapper);
 
     // Create tooltip element.
-    var tooltip = document.createElement('div');
-    tooltip.classList.add('hotspot-tooltip');
-    tooltip.classList.add('link-hotspot-tooltip');
-    tooltip.innerHTML = findSceneDataById(hotspot.target).name;
+    // var tooltip = document.createElement('div');
+    // tooltip.classList.add('hotspot-tooltip');
+    // tooltip.classList.add('link-hotspot-tooltip');
+    // tooltip.innerHTML = findSceneDataById(hotspot.target).name;
 
-    wrapper.appendChild(icon);
-    wrapper.appendChild(tooltip);
+    // wrapper.appendChild(icon);
+    // wrapper.appendChild(tooltip);
+    wrapper.appendChild(icon);   // only icon, no tooltip
+
 
     return wrapper;
   }
@@ -458,7 +488,7 @@ if (pos) {
     modal.classList.add('info-hotspot-modal');
     document.body.appendChild(modal);
 
-    var toggle = function() {
+    var toggle = function () {
       wrapper.classList.toggle('visible');
       modal.classList.toggle('visible');
     };
@@ -478,10 +508,10 @@ if (pos) {
 
   // Prevent touch and scroll events from reaching the parent element.
   function stopTouchAndScrollEventPropagation(element, eventList) {
-    var eventList = [ 'touchstart', 'touchmove', 'touchend', 'touchcancel',
-                      'wheel', 'mousewheel' ];
+    var eventList = ['touchstart', 'touchmove', 'touchend', 'touchcancel',
+      'wheel', 'mousewheel'];
     for (var i = 0; i < eventList.length; i++) {
-      element.addEventListener(eventList[i], function(event) {
+      element.addEventListener(eventList[i], function (event) {
         event.stopPropagation();
       });
     }
@@ -506,6 +536,7 @@ if (pos) {
   }
 
   // Display the initial scene.
-  switchScene(scenes[59-2-2]);
+  var initialScene = findSceneById("59-2-2");
+  switchScene(initialScene);
 
 })();

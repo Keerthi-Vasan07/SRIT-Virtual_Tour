@@ -2,7 +2,7 @@ var APP_DATA = {
   "scenes": [
     {
       "id": "59-2-2",
-      "name": "2 (2)",
+      "name": "Entrance",
       "levels": [
         {
           "tileSize": 256,
@@ -138,7 +138,7 @@ var APP_DATA = {
       ]
     },
     ////////
-     {
+    {
       "id": "45-coe-ev",
       "name": "COE - EV",
       "levels": [
@@ -357,12 +357,12 @@ var APP_DATA = {
           "rotation": 0,
           "target": "107-205jpg"
         },
-        // {
-        //   "yaw": 1.700278899862159,
-        //   "pitch": 0.20833207361578232,
-        //   "rotation": 0,
-        //   "target": "0-reception"
-        // },
+        {
+          "yaw": 1.700278899862159,
+          "pitch": 0.20833207361578232,
+          "rotation": 0,
+          "target": "0-reception"
+        },
       ],
       "infoHotspots": []
     },
@@ -884,7 +884,7 @@ var APP_DATA = {
     },
 
 
-    
+
     {
       "id": "100-283",
       "name": "283",
@@ -3087,7 +3087,7 @@ var APP_DATA = {
           "rotation": 0,
           "target": "101-189"
         }
-        
+
       ],
       "infoHotspots": []
     },
@@ -3531,7 +3531,7 @@ var APP_DATA = {
       ],
       "infoHotspots": []
     },
-    
+
     {
       "id": "60-1-1",
       "name": "1 (1)",
