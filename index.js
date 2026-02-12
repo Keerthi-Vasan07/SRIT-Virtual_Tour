@@ -321,7 +321,6 @@
 
     scene.scene.switchTo();
     startAutorotate();
-    updateSceneName(scene);
     updateSceneList(scene);
 
     var pos = mapPositions[scene.data.id];
@@ -333,9 +332,6 @@
   }
 
 
-  function updateSceneName(scene) {
-    sceneNameElement.innerHTML = sanitize(scene.data.name);
-  }
 
   function updateSceneList(scene) {
     for (var i = 0; i < sceneElements.length; i++) {
