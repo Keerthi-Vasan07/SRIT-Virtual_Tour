@@ -31,24 +31,33 @@
 
   // Dynamic Scene List Generation
   var sceneListMapping = {
+    "0-reception": "Main Entrance",
     "43-hive": "HIVE",
     "44-idea-lab": "IDEA LAB",
     "45-coe-ev": "COE Electric Vehicle",
     "36-coe--intelignce": "COE Intelligence Systems",
     "12-coe-arvr": "COE AR/VR",
-    "0-reception": "Main Entrance"
   };
 
+  var sceneListOrder = [
+    "0-reception",
+    "43-hive",
+    "44-idea-lab",
+    "45-coe-ev",
+    "36-coe--intelignce",
+    "12-coe-arvr"
+  ];
+
   var scenesUl = document.querySelector('#sceneList .scenes');
-  data.scenes.forEach(function (sceneData) {
-    if (sceneListMapping[sceneData.id]) {
+  sceneListOrder.forEach(function (sceneId) {
+    if (sceneListMapping[sceneId]) {
       var el = document.createElement('a');
       el.href = 'javascript:void(0)';
       el.classList.add('scene');
-      el.setAttribute('data-id', sceneData.id);
+      el.setAttribute('data-id', sceneId);
       var li = document.createElement('li');
       li.classList.add('text');
-      li.textContent = sceneListMapping[sceneData.id];
+      li.textContent = sceneListMapping[sceneId];
       el.appendChild(li);
       scenesUl.appendChild(el);
     }
